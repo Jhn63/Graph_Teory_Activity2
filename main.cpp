@@ -4,6 +4,7 @@
 #define QTD_GRAPH 20
 
 int main() {
+    int R, D, V;
     for (int i = 1; i <= QTD_GRAPH; i++) {
         std::string path = "IO\\Input\\";
         std::string name = "graph_" + std::to_string(i);
@@ -11,13 +12,17 @@ int main() {
         path = path + name;
         graph *g = new graph(path);
 
-        bread_fsearch *b = new bread_fsearch(g);
-        b->start();
-        b->print(name + "_bfs.gdf");
-
         deep_fsearch *d = new deep_fsearch(g);
         d->start(0,0);
         d->print(name + "_dfs.gdf");
+
+        bread_fsearch *b = new bread_fsearch(g);
+        b->start(0);
+        b->print(name + "_bfs.gdf");
+
+        b->eccentricity(&R, &D, &V);
+        std::cout << std::endl << "current: " << name << std::endl;
+        std::cout << "radius = " << R << " diameter = " << D << " average = " << V << std::endl;
 
         delete g; delete b; delete d;
     }

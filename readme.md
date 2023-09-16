@@ -1,2 +1,2 @@
-# Deepth First Search and Breadth First Search for Graphs
-An implementantion using c++
+# DFS and BFS for Graphs
+Deepth First Search and Breadth First Search algorithms implementation for graphs.<br>

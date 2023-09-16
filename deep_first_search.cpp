@@ -15,7 +15,7 @@ deep_fsearch::~deep_fsearch() {
     delete[] ps;
 }
 
-void deep_fsearch::start(int vertice, int time) {
+void deep_fsearch::start(const int vertice, int time) {
     time += 1;
     pe[vertice] = time; //tempo de entrada marcado
     
