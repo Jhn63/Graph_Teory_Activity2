@@ -13,7 +13,7 @@ int main() {
         graph *g = new graph(path);
 
         deep_fsearch *d = new deep_fsearch(g);
-        d->start(0,0);
+        d->start(0);
         d->print(name + "_dfs.gdf");
 
         bread_fsearch *b = new bread_fsearch(g);

@@ -7,7 +7,7 @@ deep_fsearch::deep_fsearch(graph *g) : search(g) {
         pe[i] = 0;
         ps[i] = 0;
     }
-
+    this->time = 0;
 }
 
 deep_fsearch::~deep_fsearch() {
@@ -15,7 +15,7 @@ deep_fsearch::~deep_fsearch() {
     delete[] ps;
 }
 
-void deep_fsearch::start(const int vertice, int time) {
+void deep_fsearch::start(const int vertice) {
     time += 1;
     pe[vertice] = time; //tempo de entrada marcado
     
@@ -24,10 +24,10 @@ void deep_fsearch::start(const int vertice, int time) {
 
     while (neighbor != l->end()) {
 
-        if (pe[*neighbor] == 0) {
+        if (pe[*neighbor] == 0) { //ainda não visitado
             paint_edge(vertice, *neighbor, BLUE);
             parent[*neighbor] = vertice;
-            start(*neighbor, time);
+            start(*neighbor);
         }   
         else if (ps[*neighbor] == 0 && *neighbor != parent[vertice]) {
             paint_edge(vertice, *neighbor, RED);

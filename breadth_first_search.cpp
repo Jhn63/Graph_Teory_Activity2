@@ -74,7 +74,7 @@ void bread_fsearch::reset() {
         level[i] = 0;
 
         for (int j = 0; j < N; j++) {
-            edges[i][j].clear();
+           edges[i][j].clear();
         }
     }
 }

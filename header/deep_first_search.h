@@ -8,12 +8,12 @@ class deep_fsearch : public search {
     private :
         int *pe;    // profundidade de entradadas
         int *ps;    // profundidade de saida
-        
+        int time;
     public :
         deep_fsearch(graph *g);
         ~deep_fsearch();
 
-        void start(const int vertice, int time);
+        void start(const int vertice);
 };
 
 #endif
