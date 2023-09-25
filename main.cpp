@@ -4,7 +4,7 @@
 #define QTD_GRAPH 20
 
 int main() {
-    int R, D, V;
+    double R, D, V;
     for (int i = 1; i <= QTD_GRAPH; i++) {
         std::string path = "IO\\Input\\";
         std::string name = "graph_" + std::to_string(i);
@@ -20,9 +20,10 @@ int main() {
         b->start(0);
         b->print(name + "_bfs.gdf");
 
-        b->eccentricity(&R, &D, &V);
+        b->eccentricity(&R, &D);
+        b->average_dis(&V);
         std::cout << std::endl << "current: " << name << std::endl;
-        std::cout << "radius = " << R << " diameter = " << D << " average = " << V << std::endl;
+        std::cout << "radius = " << R << " ; diameter = " << D << " ; average distance = " << V << std::endl;
 
         delete g; delete b; delete d;
     }

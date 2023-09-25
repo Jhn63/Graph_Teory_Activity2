@@ -79,24 +79,35 @@ void bread_fsearch::reset() {
     }
 }
 
-void bread_fsearch::eccentricity(int *radius, int *diameter, int *average) {
+void bread_fsearch::average_dis(double *average) {
+    *average = 0;
+    for (int i = 0; i < N; i++) {
+        double accum = 0;
+
+        this->reset();
+        this->start(i);
+        for (int k = 0; k < N; k++) {
+            accum += level[k];
+        }
+        accum = accum / (N-1);
+
+        *average += accum;
+    }
+    *average = *average / N;
+}
+
+void bread_fsearch::eccentricity(double *radius, double *diameter) {
     this->reset();
     this->start(0);
-
     *radius = *std::max_element(level, level + N);
     *diameter = *std::max_element(level, level + N);
-    *average = std::accumulate(level, level + N, 0) / N;
-
+    
     for (int i = 1; i < N; i++) {
         this->reset();
         this->start(i);
-
-        int current_eccy = *std::max_element(level, level + N);
-        int current_avrg = std::accumulate(level, level + N, 0) / N;
-        *average = *average + current_avrg;
-
+        double current_eccy = *std::max_element(level, level + N);
+      
         if (*radius > current_eccy)   { *radius = current_eccy; }
         if (*diameter < current_eccy) { *diameter = current_eccy; }
     }
-    *average = *average / N;
 }

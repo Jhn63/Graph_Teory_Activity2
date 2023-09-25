@@ -20,7 +20,9 @@ class bread_fsearch : public search {
         ~bread_fsearch();
 
         void start(const int vertice);
-        void eccentricity(int *radius, int *diameter, int *average);
+
+        void average_dis(double *average);
+        void eccentricity(double *radius, double *diameter);
 };
 
 #endif
