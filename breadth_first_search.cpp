@@ -21,7 +21,7 @@ void bread_fsearch::start(const int vertice) {
     while (true) {
         int i = vertice;
         bool hasv = false;
-        do {                           
+        do { //verifica se tem vertice a ser visitado
             if (visited[i] == 0) { hasv = true; break; }
             i = (i+1) % N;
         } while (i != vertice);
@@ -44,7 +44,7 @@ void bread_fsearch::bsearch(int *time) {
         std::list<int>::iterator it = l->begin();
         while (it != l->end()) {
 
-            if (visited[*it] == 0) {
+            if (visited[*it] == 0) { //não foi visitado
                 paint_edge(v, *it, BLUE);
                 parent[*it] = v;
                 level[*it] = level[v] +1;
